@@ -1,0 +1,21 @@
+services:
+  devcontainer:
+    image: mcr.microsoft.com/vscode/devcontainers/python:3-bookworm
+    working_dir: /workspaces
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    
+  # db:
+  #   image: postgres:13
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: mydatabase
+  #   ports:
+  #     - "5432:5432"
+
+  # redis:
+  #   image: redis:6
+  #   ports:
+  #     - "6379:6379"
