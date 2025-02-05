@@ -1,6 +1,8 @@
 services:
   devcontainer:
-    image: mcr.microsoft.com/vscode/devcontainers/python:3-bookworm
+    # image: mcr.microsoft.com/vscode/devcontainers/python:3-bookworm
+    build:
+      dockerfile: Dockerfile.yml
     working_dir: /workspaces
     volumes:
       - ../..:/workspaces:cached
