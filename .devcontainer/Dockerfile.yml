@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/vscode/devcontainers/python:3-bookworm
+
+RUN pip install --upgrade pip
+RUN --mount=type=bind,source=requirements.txt,target=/tmp/requirements.txt \
+    pip install --requirement /tmp/requirements.txt
