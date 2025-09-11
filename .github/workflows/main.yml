@@ -8,14 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - name: Setup Python
+        uses: actions/setup-python@v6
         
       - name: Setup AWS SAM CLI
         uses: aws-actions/setup-sam@v2
 
       - name: Docker Setup Docker
         uses: docker/setup-docker-action@v4.3.0
+        
+      - name: Checkout repository
+        uses: actions/checkout@v5
         
       - name: Build Lambda function
         run: sam build
