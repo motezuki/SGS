@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        
+      - name: Setup AWS SAM CLI
+        uses: aws-actions/setup-sam@v2
+
+      - name: Docker Setup Docker
+        uses: docker/setup-docker-action@v4.3.0
+        
+      - name: Build Lambda function
+        run: sam build
