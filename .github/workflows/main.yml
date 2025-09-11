@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Setup Python
         uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
         
       - name: Setup AWS SAM CLI
         uses: aws-actions/setup-sam@v2
