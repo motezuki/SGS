@@ -6,7 +6,8 @@ from pytest_mock import MockerFixture
 from dash import Dash
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../SGS')))
-from handler import lambda_handler, app
+from handler import lambda_handler
+from app import app
 
 @pytest.mark.parametrize("method, expected_output",
                           [("GET", 200),
