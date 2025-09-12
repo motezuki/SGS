@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  CI:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,12 +12,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: 3.13
-        
-      - name: Setup AWS SAM CLI
-        uses: aws-actions/setup-sam@v2
-
-      - name: Docker Setup Docker
-        uses: docker/setup-docker-action@v4.3.0
         
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -36,5 +30,26 @@ jobs:
         run: |
           pylint --disable=R,C SGS/ tests/
 
-      - name: Build Lambda function
-        run: sam build
+      - name: Run tests
+        run: |
+          pytest tests/unit/  
+
+  Build:
+    needs: CD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Setup AWS SAM CLI
+        uses: aws-actions/setup-sam@v2
+
+      - name: Docker Setup Docker
+        uses: docker/setup-docker-action@v4.3.0
+        
+      - name: Build SAM application
+        run: |
+          sam build
+          sam deploy
