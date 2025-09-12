@@ -1,7 +1,7 @@
 import json
 import serverless_wsgi
 from dash import Dash
-from sgs import build_page
+from SGS.sgs import build_page
 
 app = Dash(__name__,
         serve_locally=False,
