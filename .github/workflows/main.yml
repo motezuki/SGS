@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD Pipeline
 on:
   push:
     branches:
@@ -35,7 +35,7 @@ jobs:
           pytest tests/unit/  
 
   Build:
-    needs: CD
+    needs: CI
     runs-on: ubuntu-latest
     steps:
       - name: Setup Python
