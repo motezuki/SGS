@@ -1,7 +1,6 @@
 import json
 import serverless_wsgi
-from dash import Dash
-from app import app
+from SGS.app import app
 
 def lambda_handler(event, context):
     # Log the incoming event
