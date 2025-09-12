@@ -21,6 +21,14 @@ jobs:
         
       - name: Checkout repository
         uses: actions/checkout@v5
-        
+
+      - name: Format Lambda function
+        run: |
+          black src/ tests/
+
+      - name: Lint Lambda function
+        run: |
+          pylint --disable=R,C src/ tests/
+
       - name: Build Lambda function
         run: sam build
