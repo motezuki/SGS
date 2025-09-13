@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - development
 jobs:
   CI:
     runs-on: ubuntu-latest
@@ -32,7 +33,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest tests/unit/  
+          pytest tests/  
 
   Build:
     needs: CI
@@ -48,8 +49,10 @@ jobs:
 
       - name: Docker Setup Docker
         uses: docker/setup-docker-action@v4.3.0
+
+      - name: Checkout repository
+        uses: actions/checkout@v5        
         
       - name: Build SAM application
         run: |
           sam build
-          sam deploy
