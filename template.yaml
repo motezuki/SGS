@@ -17,8 +17,8 @@ Resources:
   SGSFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: src/
-      Handler: app.lambda_handler
+      CodeUri: SGS/
+      Handler: handler.lambda_handler
       Runtime: python3.13
       Architectures:
       - x86_64
@@ -26,7 +26,7 @@ Resources:
         SGS:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /SGS
+            Path: /SGS2
             Method: get
 
 Outputs:
@@ -34,11 +34,14 @@ Outputs:
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   SGSApi:
-    Description: API Gateway endpoint URL for Prod stage for Hello World function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+    Description: API Gateway endpoint URL for Prod stage for SGS function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS2/"
+  SGSApiProxy:
+    Description: API Gateway endpoint URL with proxy path for Prod stage for SGS function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS2/{proxy+}"
   SGSFunction:
     Description: Hello World Lambda Function ARN
     Value: !GetAtt SGSFunction.Arn
   SGSFunctionIamRole:
-    Description: Implicit IAM Role created for Hello World function
+    Description: Implicit IAM Role created for SGS function
     Value: !GetAtt SGSFunctionRole.Arn
