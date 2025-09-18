@@ -36,7 +36,7 @@ Outputs:
   SGSApi:
     Description: API Gateway endpoint URL for Prod stage for SGS function
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS2/"
-  SGSApi:
+  SGSApiProxy:
     Description: API Gateway endpoint URL with proxy path for Prod stage for SGS function
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS2/{proxy+}"
   SGSFunction:
