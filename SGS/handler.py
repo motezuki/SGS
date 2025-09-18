@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 import json
 import serverless_wsgi
-from app import app
+from SGS.app import app
 
 def lambda_handler(event, context):
     # Log the incoming event
