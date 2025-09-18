@@ -61,4 +61,4 @@ jobs:
         env:
           AWS_DEFAULT_REGION: sa-east-1
         run: |
-          sam deploy --stack-name sgs-stack-dev --region sa-east-1 --capabilities CAPABILITY_IAM --no-confirm-changeset --no-fail-on-empty-changeset --parameter-overrides Environment=development
+          sam deploy --stack-name sgs-stack-dev --region sa-east-1 --no-confirm-changeset --no-fail-on-empty-changeset Environment=development
