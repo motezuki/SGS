@@ -1,6 +1,6 @@
 import pytest
 
-from handler import lambda_handler
+from SGS.handler import lambda_handler
 
 @pytest.mark.parametrize("method, expected_output",
                           [("GET", 200),
