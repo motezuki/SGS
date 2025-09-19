@@ -7,6 +7,8 @@ on:
 jobs:
   CI:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: SGS
 
     steps:
       - name: Setup Python
@@ -29,7 +31,7 @@ jobs:
 
       - name: Lint Lambda function
         run: |
-          PYTHONPATH=SGS pylint --disable=R,C SGS/ tests/
+          pylint --disable=R,C SGS/ tests/
 
       - name: Run tests
         run: |
