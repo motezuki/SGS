@@ -11,7 +11,11 @@
         }
     },
     "features":{
+        "ghcr.io/devcontainers/features/aws-cli": {},
         "ghcr.io/customink/codespaces-features/sam-cli": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "containerEnv": {
+        "AWS_DEFAULT_REGION": "sa-east-1"
     }
 }
