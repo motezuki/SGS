@@ -35,7 +35,7 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   SGSApi:
     Description: API Gateway endpoint URL for Prod stage for SGS function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS2/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS/"
   SGSFunction:
     Description: SGS Lambda Function ARN
     Value: !GetAtt SGSFunction.Arn
