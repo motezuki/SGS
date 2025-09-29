@@ -53,11 +53,29 @@ jobs:
         uses: docker/setup-docker-action@v4.3.0
 
       - name: Checkout repository
-        uses: actions/checkout@v5        
+        uses: actions/checkout@v5
         
       - name: Build SAM application
         run: |
           sam build
+
+  Deploy:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Setup AWS SAM CLI
+        uses: aws-actions/setup-sam@v2
+
+      - name: Docker Setup Docker
+        uses: docker/setup-docker-action@v4.3.0
+
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
       - name: Deploy SAM application
         env:
