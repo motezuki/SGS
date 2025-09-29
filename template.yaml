@@ -28,6 +28,11 @@ Resources:
           Properties:
             Path: /SGS
             Method: get
+        ProxyPlus:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
