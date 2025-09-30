@@ -27,8 +27,6 @@ Resources:
       Runtime: python3.12
       Architectures:
       - x86_64
-    Metadata:
-      BuildMethod: python3.12
       Events:
         SGS:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -42,6 +40,8 @@ Resources:
             RestApiId: !Ref SGSApi
             Path: /{proxy+}
             Method: ANY
+    Metadata:
+      BuildMethod: python3.12
 
 
 Outputs:
