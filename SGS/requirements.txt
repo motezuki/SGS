@@ -1,5 +1,5 @@
 requests
-serverless_wsgi
+serverless-wsgi
 dash
 dash-bootstrap-components
 dash-ag-grid
