@@ -14,6 +14,11 @@ Globals:
     LoggingConfig:
       LogFormat: JSON
 Resources:
+  SGSApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      
   SGSFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -28,22 +33,21 @@ Resources:
         SGS:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /SGS
+            RestApiId: !Ref SGSApi
+            Path: /
             Method: get
         ProxyPlus:
           Type: Api
           Properties:
-            Path: /SGS/{proxy+}
+            RestApiId: !Ref SGSApi
+            Path: /{proxy+}
             Method: ANY
 
 
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  SGSApi:
+  SGSApiUrl:
     Description: API Gateway endpoint URL for Prod stage for SGS function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/SGS/"
+    Value: !Sub "https://${SGSApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
   SGSFunction:
     Description: SGS Lambda Function ARN
     Value: !GetAtt SGSFunction.Arn
