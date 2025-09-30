@@ -1,6 +1,6 @@
 requests
-serverless_wsgi
+serverless-wsgi
 dash
-dash_bootstrap_components
-dash_ag_grid
+dash-bootstrap-components
+dash-ag-grid
 pandas

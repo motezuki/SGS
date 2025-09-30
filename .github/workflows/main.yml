@@ -57,7 +57,7 @@ jobs:
         
       - name: Build SAM application
         run: |
-          sam build
+          sam build --use-container
 
   Deploy:
     needs: Build
