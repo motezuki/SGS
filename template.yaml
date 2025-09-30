@@ -19,7 +19,7 @@ Resources:
     Properties:
       CodeUri: SGS/
       Handler: handler.lambda_handler
-      Runtime: python3.13
+      Runtime: python3.12
       Architectures:
       - x86_64
       Events:
@@ -34,7 +34,7 @@ Resources:
             Path: /SGS/{proxy+}
             Method: ANY
     Metadata:
-      BuildMethod: python3.13
+      BuildMethod: python_pip
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
